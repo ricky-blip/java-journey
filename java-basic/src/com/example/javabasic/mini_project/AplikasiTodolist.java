@@ -9,7 +9,11 @@ public class AplikasiTodolist {
         //testShowTodolist();
         //testAddTodolist();
         //testRemoveTodolist();
-        testInput();
+        //testInput();
+        //testviewShowTodoList();
+        //testViewAddTodoList();
+        //testViewRemoveTodoList();
+        viewShowTodoList();
     }
 
     //MODEL - untuk menyimpan datanya
@@ -131,14 +135,79 @@ public class AplikasiTodolist {
     //----- VIEW -----
     //view data todo list
     public static void viewShowTodoList() {
+        while (true){
+            showTodolist();
+
+            System.out.println("MENU : ");
+            System.out.println("1. Tambah");
+            System.out.println("2. Hapus");
+            System.out.println("x. Keluar");
+
+            var input = input("Pilih");
+
+            if (input.equals("1")){
+                viewAddTodoList();
+            } else if (input.equals("2")) {
+                viewRemoveTodoList();
+            } else if (input.equals("x")) {
+                break;
+            }else {
+                System.out.println("Pilihan tidak dimengerti");
+            }
+        }
 
     }
+    public static void testviewShowTodoList(){
+        addTodolist("Satu");
+        addTodolist("Dua");
+        addTodolist("Tiga");
+        addTodolist("Empat");
+        addTodolist("Lima");
+        viewShowTodoList();
+    }
+
     //view add todo list
     public static void viewAddTodoList() {
+        System.out.println("MENAMBAH TODOLIST");
 
+        var todo = input("Todo (x Jika Batal)");
+
+        if (todo.equals("x")){
+            //batal
+        } else {
+            addTodolist(todo);
+        }
     }
+    public static void testViewAddTodoList(){
+        addTodolist("Satu");
+        addTodolist("Dua");
+        addTodolist("Tiga");
+        viewAddTodoList();
+
+        showTodolist();
+    }
+
     //view remove todo list
     public static void viewRemoveTodoList() {
+        System.out.println("MENGHAPUS TODOLIST");
 
+        var number = input("Nomor yang Dihapus (x Jika Batal)");
+
+        if (number.equals("x")){
+            //batal
+        } else {
+            boolean success = removeTodolist(Integer.valueOf(number));
+            if (!success){
+                System.out.println("Gagal menghapus todolist : " + number);
+            }
+        }
+    }
+    public static void testViewRemoveTodoList() {
+        addTodolist("Satu");
+        addTodolist("Dua");
+        addTodolist("Tiga");
+        showTodolist();
+        viewRemoveTodoList();
+        showTodolist();
     }
 }
