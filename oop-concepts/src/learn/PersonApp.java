@@ -13,5 +13,6 @@ public class PersonApp {
         System.out.println(name);
         System.out.println(address);
         System.out.println(person1.country);
+        person1.sayHello("Ini Method");
     }
 }

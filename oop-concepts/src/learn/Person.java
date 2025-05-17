@@ -6,4 +6,8 @@ public class Person {
     String name;
     String address;
     final String country = "Germany";
+    //membuat Method
+    void sayHello(String paramName){
+        System.out.println(paramName);
+    }
 }
